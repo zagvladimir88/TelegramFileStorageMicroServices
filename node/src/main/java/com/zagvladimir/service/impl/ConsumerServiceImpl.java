@@ -1,12 +1,10 @@
 package com.zagvladimir.service.impl;
 
 import com.zagvladimir.service.ConsumerService;
-import com.zagvladimir.service.ProduceService;
+import com.zagvladimir.service.MainService;
 import lombok.extern.log4j.Log4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 import static com.zagvladimir.model.RabbitQueue.*;
@@ -14,22 +12,18 @@ import static com.zagvladimir.model.RabbitQueue.*;
 @Service
 @Log4j
 public class ConsumerServiceImpl implements ConsumerService {
-    private final ProduceService produceService;
+    private final MainService mainService;
 
-    public ConsumerServiceImpl(ProduceService produceService) {
-        this.produceService = produceService;
+    public ConsumerServiceImpl(MainService mainService) {
+        this.mainService = mainService;
     }
 
     @Override
     @RabbitListener(queues = TEXT_MESSAGE_UPDATE)
     public void consumeTextMessageUpdates(Update update) {
         log.debug("NODE: Text message is received");
+        mainService.processTextMessage(update);
 
-        var message = update.getMessage();
-        var sendMessage = new SendMessage();
-        sendMessage.setChatId(message.getChatId().toString());
-        sendMessage.setText("Hello from Node");
-        produceService.produceAnswer(sendMessage);
     }
 
     @Override
