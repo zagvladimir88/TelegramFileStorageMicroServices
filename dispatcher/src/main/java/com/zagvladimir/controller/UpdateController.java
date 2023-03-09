@@ -1,19 +1,24 @@
 package com.zagvladimir.controller;
 
+import com.zagvladimir.service.UpdateProducer;
 import com.zagvladimir.utils.MessageUtils;
 import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
+import static com.zagvladimir.model.RabbitQueue.*;
+
 @Component
 @Log4j
 public class UpdateController {
     private TelegramBot telegramBot;
-    private MessageUtils messageUtils;
+    private final MessageUtils messageUtils;
+    private final UpdateProducer updateProducer;
 
-    public UpdateController(MessageUtils messageUtils) {
+    public UpdateController(MessageUtils messageUtils, UpdateProducer updateProducer) {
         this.messageUtils = messageUtils;
+        this.updateProducer = updateProducer;
     }
 
     public void registerBot(TelegramBot telegramBot){
@@ -28,7 +33,7 @@ public class UpdateController {
         if(update.getMessage() != null){
             distributeMessagesByType(update);
         } else {
-            log.error("Received unsupported message type " + update);
+            log.error("Received unsupported message type is received: " + update);
         }
     }
 
@@ -48,10 +53,15 @@ public class UpdateController {
     }
 
     private void setUnsupportedMessageTypeView(Update update) {
-
             var sendMessage = messageUtils.generateSendMessageWithText(update,
                     "Неподдерживаемый тип сообщения!");
             setView(sendMessage);
+    }
+
+    private void setFileIsReceiveView(Update update) {
+        var sendMessage = messageUtils.generateSendMessageWithText(update,
+                "Файл получен! Обрабатывается...");
+        setView(sendMessage);
     }
 
     private void setView(SendMessage sendMessage) {
@@ -59,15 +69,18 @@ public class UpdateController {
     }
 
     private void processPhotoMessage(Update update) {
-
+        updateProducer.produce(PHOTO_MESSAGE_UPDATE, update);
+        setFileIsReceiveView(update);
     }
 
     private void processDocMessage(Update update) {
-
+        updateProducer.produce(DOC_MESSAGE_UPDATE, update);
+        setFileIsReceiveView(update);
     }
 
     private void processTextMessage(Update update) {
-
+        updateProducer.produce(TEXT_MESSAGE_UPDATE, update);
+        setFileIsReceiveView(update);
     }
 
 }
