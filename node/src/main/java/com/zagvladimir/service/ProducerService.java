@@ -2,6 +2,6 @@ package com.zagvladimir.service;
 
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
-public interface ProduceService {
+public interface ProducerService {
     void produceAnswer(SendMessage sendMessage);
 }

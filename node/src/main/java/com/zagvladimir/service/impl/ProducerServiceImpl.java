@@ -1,6 +1,6 @@
 package com.zagvladimir.service.impl;
 
-import com.zagvladimir.service.ProduceService;
+import com.zagvladimir.service.ProducerService;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -8,10 +8,10 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import static com.zagvladimir.model.RabbitQueue.ANSWER_MESSAGE;
 
 @Service
-public class ProduceServiceImpl implements ProduceService {
+public class ProducerServiceImpl implements ProducerService {
     private final RabbitTemplate rabbitTemplate;
 
-    public ProduceServiceImpl(RabbitTemplate rabbitTemplate) {
+    public ProducerServiceImpl(RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
     }
 
