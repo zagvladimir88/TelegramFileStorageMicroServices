@@ -17,6 +17,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <postgresql.version>42.2.18</postgresql.version>
         <vladmihalcea.version>2.2.2</vladmihalcea.version>
+        <javaxmail.version>1.4</javaxmail.version>
     </properties>
 
     <dependencies>
@@ -69,6 +70,12 @@
             <groupId>com.zagvladimir</groupId>
             <artifactId>common-utils</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>${javaxmail.version}</version>
         </dependency>
     </dependencies>
 

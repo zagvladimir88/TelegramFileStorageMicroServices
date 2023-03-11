@@ -23,7 +23,6 @@ public class ConsumerServiceImpl implements ConsumerService {
     public void consumeTextMessageUpdates(Update update) {
         log.debug("NODE: Text message is received");
         mainService.processTextMessage(update);
-
     }
 
     @Override
