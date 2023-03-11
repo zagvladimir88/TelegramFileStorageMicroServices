@@ -1,4 +1,5 @@
-server.port=8085
+server.port=8086
+
 # Gmail SMTP
 spring.mail.host=smtp.gmail.com
 spring.mail.port=587
@@ -6,6 +7,5 @@ spring.mail.username=username@gmail.com
 spring.mail.password=password
 spring.mail.properties.mail.smtp.auth=true
 spring.mail.properties.mail.smtp.starttls.enable=true
-spring.mail.templates.path=mail-templates
 
 service.activation.uri=http://127.0.0.1:8087/mail/activation?id={id}
