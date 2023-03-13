@@ -22,6 +22,8 @@ The project consists of the following microservices:
 * Mail service - a service responsible for sending email messages with registration confirmation and account activation;
 * RESTful service - a service that provides an API for working with user data and authentication.
 
+![project illustration](https://github.com/zagvladimir88/TelegramFileStorageMicroServices/blob/master/raw/diagram.png)
+
 
 # Technologies Used
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white)
