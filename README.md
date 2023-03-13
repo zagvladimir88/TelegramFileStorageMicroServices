@@ -44,9 +44,9 @@ The project consists of the following microservices:
 # Requirements
 To run the project, you need to install the following components:
 
-JDK 17 or higher;
-Apache Maven 3.6.0 or higher;
-Docker 20.10.0 or higher;
-RabbitMQ 3.7.0 or higher;
-Postgresql 9.6 or higher.
+* JDK 17 or higher;
+* Apache Maven 3.8.0 or higher;
+* Docker 20.10.0 or higher;
+* RabbitMQ 3.7.0 or higher;
+* Postgresql 14 or higher.
 
