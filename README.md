@@ -22,6 +22,8 @@ The project consists of the following microservices:
 * Mail service - a service responsible for sending email messages with registration confirmation and account activation;
 * RESTful service - a service that provides an API for working with user data and authentication.
 
+![project illustration](https://github.com/zagvladimir88/TelegramFileStorageMicroServices/blob/master/raw/diagram.png)
+
 
 # Technologies Used
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white)
@@ -42,9 +44,9 @@ The project consists of the following microservices:
 # Requirements
 To run the project, you need to install the following components:
 
-JDK 17 or higher;
-Apache Maven 3.6.0 or higher;
-Docker 20.10.0 or higher;
-RabbitMQ 3.7.0 or higher;
-Postgresql 9.6 or higher.
+* JDK 17 or higher;
+* Apache Maven 3.8.0 or higher;
+* Docker 20.10.0 or higher;
+* RabbitMQ 3.7.0 or higher;
+* Postgresql 14 or higher.
 
