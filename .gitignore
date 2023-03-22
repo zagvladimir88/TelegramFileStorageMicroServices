@@ -24,3 +24,4 @@ hs_err_pid*
 /dispatcher/src/main/resources/application.properties
 /node/src/main/resources/application.properties
 /mail-service/src/main/resources/application.properties
+/rest-service/src/main/resources/application.properties

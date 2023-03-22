@@ -41,7 +41,7 @@ class FileServiceImplTest {
         long documentId = 1;
         AppDocument expectAppDocument = new AppDocument();
         expectAppDocument.setId(1L);
-        expectAppDocument.setTelegramFileId("test");
+        expectAppDocument.setTelegramFileId("Test");
 
         when(cryptoTool.idOf(any(String.class))).thenReturn(documentId);
         when(appDocumentDAO.findById(any())).thenReturn(Optional.of(expectAppDocument));
