@@ -54,7 +54,7 @@ class FileServiceImplTest {
 
     @Test
     void testFailGetDocumentWithInvalidHashId() {
-        String wrongHashId = "";
+        String wrongHashId = "err";
 
         doReturn(null).when(cryptoTool).idOf(wrongHashId);
         AppDocument actualDocument = fileService.getDocument(wrongHashId);
